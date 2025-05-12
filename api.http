@@ -1,0 +1,63 @@
+### 1. Получить все сенсоры (доступно ADMINISTRATOR и VIEWER)
+GET http://localhost:8080/api/sensors
+Authorization: Basic YWRtaW46YWRtaW4=
+
+###
+
+### 2. Поиск сенсоров по name или model (частичное совпадение)
+GET http://localhost:8080/api/sensors/search?query=Baro
+Authorization: Basic YWRtaW46YWRtaW4=
+
+###
+
+### 3. Получить сенсор по ID
+GET http://localhost:8080/api/sensors/1
+Authorization: Basic YWRtaW46YWRtaW4=
+
+###
+
+### 4. Создать новый сенсор (только ADMINISTRATOR)
+POST http://localhost:8080/api/sensors
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Type: application/json
+
+{
+  "name": "Barometer",
+  "model": "ac-23",
+  "range": {
+    "from": 22,
+    "to": 45
+  },
+  "type": "PRESSURE",
+  "unit": "BAR",
+  "location": "kitchen",
+  "description": "description"
+}
+
+###
+
+### 5. Обновить существующий сенсор (только ADMINISTRATOR)
+PUT http://localhost:8080/api/sensors/1
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Type: application/json
+
+{
+  "name": "Barometer Updated",
+  "model": "ac-99",
+  "range": {
+    "from": 20,
+    "to": 50
+  },
+  "type": "PRESSURE",
+  "unit": "BAR",
+  "location": "lab",
+  "description": "Updated description"
+}
+
+###
+
+### 6. Удалить сенсор (только ADMINISTRATOR)
+DELETE http://localhost:8080/api/sensors/1
+Authorization: Basic YWRtaW46YWRtaW4=
+
+###
